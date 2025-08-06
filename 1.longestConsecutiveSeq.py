@@ -33,5 +33,5 @@ class solution:
         return max_length
 
 if __name__ == '__main__':
-    nums = list(map(int,input("enter an integer arrray ").split(",")))
+    nums = list(map(int,input("enter an integer arrray = ").split(",")))
     print(solution().longestSequence(nums))
