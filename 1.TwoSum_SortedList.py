@@ -1,4 +1,4 @@
-# Difficulty : Medium
+# Difficulty : Medium 
 # Variant of TwoSum but the list is sorted. So the space complexity can be reduced to O(1) by using 2 pointers.
 
 # Given a 1-indexed, sorted array of integers, find two numbers that add up to a specific target. 
