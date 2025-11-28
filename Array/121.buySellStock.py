@@ -1,6 +1,6 @@
 # Easy
 # Best Time to Buy and Sell Stock
-# single-pass greedy
+# Array / single-pass greedy
 
 # You are given an array prices where prices[i] is the price of a given stock on the ith day.
 # You want to maximize your profit by choosing a single day to buy one stock and choosing a different day 
@@ -22,15 +22,20 @@
 ########################################################################
 class Solution:
     def buySellStock(self, prices:list[int])->int:
-        if not prices:
+        if not prices or len(prices) < 2:
             return 0
+        
         min_price = prices[0]
         max_profit = 0
+
         for price in prices[1:]:
             if price < min_price:
                 min_price = price
-            max_profit = max(max_profit, (price - min_price)) 
+
+            max_profit = max(max_profit, price - min_price) 
+
         return max_profit
+    
 if __name__ == '__main__':
     prices = list(map(int,input("enter prices array = ").split(",")))
     print(Solution().buySellStock(prices))

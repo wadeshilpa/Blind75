@@ -19,6 +19,9 @@
 ########################################################################
 class Solution:
     def searchInRotatedSortedList(self, nums:list[int], target:int)-> int:
+        if not nums:
+            return -1
+        
         left = 0
         right = len(nums)-1
 

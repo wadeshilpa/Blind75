@@ -17,6 +17,9 @@
 ########################################################################
 class Solution:
     def mergeIntervals(self, intervals: list[list[int]]) -> list[list[int]]:
+        if not intervals:
+            return []
+        
         intervals.sort() 
         prev = intervals[0]
         merged = []
