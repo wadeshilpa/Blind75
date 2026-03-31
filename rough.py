@@ -368,4 +368,243 @@ class solution:
 
 
 
+Input:  nums = [1, 2, 3, 4]
+Output: [24, 12, 8, 6]
+
+
+class Solution:
+    def productExceptItself(self, nums:list[int])->list[int]:
+        n = len(nums)
+        left = [1] * n
+        right = [1] * n
+        product = [1] * n
+
+        for i in range(1, len(nums)):
+            left[i] = left[i-1] * nums[i-1]
+
+        for i in range(len(nums)-2, -1, -1):
+            right[i] = right[i+1] * nums[i+1]
+
+        for i in range(len(nums)):
+            product[i] = left[i] * right[i]
+
+        return product
+    
+
+class Solution:
+    def containsDuplicate(self, nums:list[int])->bool:
+        num_set = set()
+
+        for num in nums:
+            if num in num_set:
+                return True 
+            num_set.add(num)
+
+        return False
+        
+class Solution:
+    def validAnagram(self, s:str, t:str)->bool:
+        if len(s) != len(t):
+            return False 
+        
+        if not s:
+            return True
+        
+        s_dict = {}
+        t_dict = {}
+        
+        for i in range(len(s)):
+            s_dict[s[i]] = s_dict.get(s[i], 0) + 1
+            t_dict[t[i]] = t_dict.get(t[i], 0) + 1
+
+        return s_dict == t_dict
+
+class Solution:
+    def twoSum(self, nums:list[int], target:int)->list[int]:
+        if not nums:
+            return [] 
+        
+        num_dict = {}
+
+        for i, num in enumerate(nums):
+            diff = target - num
+
+            if diff in num_dict:
+                return [num_dict[diff], i]
+            
+            num_dict[num] = i 
+
+        return []
+        
+class Solution:
+    def groupAnagram(self, strs:list[str])->list[list[str]]:
+        if not strs:
+            return []
+
+        s_dict = {}
+
+        for s in strs:
+            s_sorted = "".join(sorted(s))
+
+            if s_sorted not in s_dict:
+                s_dict[s_sorted] = []
+
+            s_dict[s_sorted].append(s)
+
+        return list(s_dict.values())
+
+
+class Solution:
+    def buyAndSellStock(self, prices:list[int])->int:
+        min_price = prices[0]
+        max_profit = 0
+
+        for price in prices[1:]:
+            if price < min_price:
+                min_price = price 
+            
+            profit = price - min_price
+            max_profit = max(profit, max_profit)
+
+        return max_profit
+    
+ [1, 8, 6, 2, 5, 4, 8, 3, 7]. Output: 49
+
+class Solution:
+    def containerWithMostWater(self, height:list[int])->int:
+        left = 0
+        right = len(height) - 1
+        maxArea = 0
+
+        while left < right:
+            area = min(height[left], height[right]) * (right-left)
+            maxArea = max(area, maxArea)
+
+            if height[left] < height[right]:
+                left = left + 1 
+            else:
+                right = right - 1
+
+        return maxArea
+    
+
+Input:  nums = [4, 5, 6, 7, 0, 1, 2], target = 0
+Output: 4
+
+Input:  nums = [4, 5, 6, 7, 0, 1, 2], target = 3
+Output: -1
+
+class Solution:
+    def findInRotatedSortedArray(self, nums:list[int], target:int)->int:
+        left = 0 
+        right = len(nums) - 1
+
+        while left <= right:
+            mid = (left + right)//2
+
+            if nums[mid] == target:
+                return mid 
+            
+            if nums[left] < nums[mid]:
+                if nums[left] <= target <= nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1 
+            else:
+                if nums[mid] <= target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return -1
+        
+
+
+Input:  nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Output: 6
+Explanation: [4, -1, 2, 1] has the largest sum = 6
+
+Input:  nums = [1]
+Output: 1
+
+Input:  nums = [5, 4, -1, 7, 8]
+Output: 23
+
+class Solution:
+    def maxSubarray(self, nums:list[int])->int:
+        num_set = set(nums)
+        max_counter = 0
+
+        for num in num_set:
+            counter = 0
+            if (num-1) not in num_set:
+                while num in num_set:
+                    num = num + 1
+                    counter = counter + 1
+                max_counter = max(counter, max_counter)
+        return max_counter
+                
+
+class Solution:
+    def maxSubarraySum(self, nums:list[int])->int: 
+        current_sum = nums[0]
+        max_current_sum = nums[0]
+
+        for num in nums[1:]:
+            if (current_sum + num) <= num:
+                current_sum = num
+            else:
+                current_sum = current_sum + num
+            max_current_sum = max(current_sum, max_current_sum)
+
+        return max_current_sum
+
+Input:  nums = [3, 4, 5, 1, 2]
+Output: 1
+Explanation: Original array was [1,2,3,4,5], rotated 3 times
+
+Input:  nums = [4, 5, 6, 7, 0, 1, 2]
+Output: 0
+
+Input:  nums = [4, 5, 6, 7, 8, 9, 0, 1, 2]
+Output: 0
+
+[14, 15, 16, 17, 0, 1, 2, 3, 4, 5, 6, 7,8, 9, 10, 11, 12, 13]
+
+class Solution:
+    def minInRotatedSortedArray(self, nums:list[int])->int:
+        left = 0
+        right = len(nums)-1
+
+        if nums[left] < nums[right]:
+            return nums[left]
+        
+        while left <= right:
+            mid = (left + right)//2
+
+            if nums[left] < nums[mid]:
+                left = mid + 1
+            else:
+                right = mid 
+
+
+Input:  nums = [1,1,1,2,2,3], k = 2
+Output: [1, 2]
+
+Input:  nums = [1], k = 1
+Output: [1]
+
+
+class Solution:
+    def topKFrequent(self, nums:list[int], k:int)->list[int]:
+        n_dict = {}
+
+        for n in nums:
+            n_dict[n] = n_dict.get(n, 0) + 1
+
+        n_dict = dict(sorted(n_dict.items(), key = lambda x:x[1], reverse=True))
+
+        return list(n_dict.keys())[:k]
+
+
+
 
