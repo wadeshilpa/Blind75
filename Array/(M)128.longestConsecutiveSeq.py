@@ -22,16 +22,20 @@
 ########################################################################
 class solution:
     def longestSequence(self, nums:list[int])->int:
-        max_length = 0
+        if not nums:
+            return 0
+            
+        max_count = 0
         num_set = set(nums) 
 
-        for num in num_set:  
+        for num in num_set:                          #  iterate set to skip duplicates
+            counter = 0
             if (num - 1) not in num_set:
-                length = 1
-                while (num + length) in num_set:
-                    length = length + 1
-                max_length = max(length, max_length)
-        return max_length
+                while num  in num_set:
+                    num = num + 1
+                    counter = counter + 1
+                max_count = max(max_count, counter)
+        return max_count
 
 if __name__ == '__main__':
     nums = list(map(int,input("enter an integer arrray = ").split(",")))
