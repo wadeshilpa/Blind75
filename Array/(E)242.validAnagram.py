@@ -1,6 +1,7 @@
 # Easy
 # Valid Anagram
 # Hash Map / Dictionary
+# https://leetcode.com/problems/valid-anagram/description/
 
 # An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
 # using all the original letters exactly once.

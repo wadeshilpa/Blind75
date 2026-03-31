@@ -217,30 +217,155 @@
 #         return longest
 
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right 
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right 
 
-class Solution:
-    def maxDepth(self, root:TreeNode)->int:
-        if root is None:
-            return 0
+# class Solution:
+#     def maxDepth(self, root:TreeNode)->int:
+#         if root is None:
+#             return 0
 
-        maxLength = 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+#         maxLength = 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
-        return maxLength
+#         return maxLength
 
-if __name__ == "__main__":
-    root = TreeNode(3, 
-                    TreeNode(9), 
-                    TreeNode(20, TreeNode(15), TreeNode(7, TreeNode(1), TreeNode(2))))
-    print(Solution().maxDepth(root))
+# if __name__ == "__main__":
+#     root = TreeNode(3, 
+#                     TreeNode(9), 
+#                     TreeNode(20, TreeNode(15), TreeNode(7, TreeNode(1), TreeNode(2))))
+#     print(Solution().maxDepth(root))
+
+# You are given two integer arrays departures[0..n-1] and returns[0..n-1], 
+# where departures[i] is the ticket cost to depart on day i and 
+#     returns[j] is the ticket cost to return on day j.
+# Choose a pair of days (i, j) such that 0 ≤ i < j < n (return must be on a later day) 
+# to minimize the total cost departures[i] + returns[j].
+
+# Example: departures=[1,2,3,4], returns=[4,3,2,1] → minimum cost 2 (depart day 0, return day 3).
 
 
+# if __name__ == "__main__":
+#     print("hi")
 
+#     # departures=[1,2,3,4]
+#     # returns=[4,3,2,1] 
+#     departures=[1,2,3,4]
+#     returns=[4,3,2,5,6,2,1] 
 
+#     min_departures = departures[0]
+#     min_price = float("inf")
+
+#     # for i in range(len(departures)):
+#     #     departure = departures[i]
+#     #     if departure < min_departures:
+#     #         min_departures = departure
+
+#     #     min_price = min(min_price, (returns[i]+min_departures))
+
+#     # for i in range(i, len(returns)):
+#     #     min_price = min(min_price, (returns[i]+min_departures))
+
+#     # print(min_price)    
+
+#     for j in range(1, len(returns)):
+#         if j < len(departures):
+#             if departures[j-1] < min_departures:
+#                 min_departures = departures[j]
+
+#         min_price = min(min_price, (returns[j] + min_departures))
+
+#     print(min_price)
 
 
         
+
+
+class solution:
+    def containsDuplicate(self, nums:list[int])->bool:
+        if not nums or len(nums) < 2:
+            return False
+        
+        seen = set()
+
+        for num in nums:
+            if num in seen:
+                return True 
+            seen.add(num)
+
+        return False
+    
+Input: s = "racecar", t = "carrace"
+
+Output: true
+
+class solution:
+    def validAnagram(self, s:str, t:str)->bool:
+        if len(s) != len(t):
+            return False
+        
+        if not s:
+            return True 
+        
+        s_dict = {}
+        t_dict = {}
+
+        for i in range(len(s)):
+            s_dict[s[i]] = s_dict.get(s[i], 0) + 1
+            t_dict[t[i]] = t_dict.get(t[i], 0) + 1
+
+        if s_dict == t_dict:
+            return True 
+        
+        return False
+    
+
+class solution:
+    def twoSum(self, nums:list[int], target:int)->list[int]:
+        nums_dict = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+
+            if diff in nums_dict:
+                return [nums_dict[diff], i]
+            
+            nums_dict[num] = i
+
+        return []
+    
+
+
+class solution:
+    def groupAnagrams(self, strs:list[str])->list[list[str]]:
+        map_groups = {}
+        for s in strs:
+            sorted_s = "".join(sorted(s))
+
+            if sorted_s not in map_groups:
+                map_groups[sorted_s] = []
+
+            map_groups[sorted_s].append(s)
+
+        return list(map_groups.values())
+    
+
+nums = [1,2,2,3,3,3], k = 2.    Output: [2,3]
+nums = [7,7], k = 1             Output: [7]
+
+class solution:
+    def topKFrequent(self, nums:list[int],k:int)->list[int]:
+        frequency = {}
+        for num in nums:
+            frequency[num] = frequency.get(num, 0) + 1
+
+        frequency = dict(sorted(frequency.items(), key = lambda x:x[1], reverse = True))
+
+        return list(frequency.keys())[:k]
+
+
+
+
+
+

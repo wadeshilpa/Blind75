@@ -1,6 +1,7 @@
 # Medium
 # Search in Rotated Sorted Array
 # binary search
+# https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 
 # There is an integer array nums sorted in ascending order (with distinct values).
 # Prior to being passed to your function, nums is possibly left rotated at an unknown index k (1 <= k < nums.length) 
