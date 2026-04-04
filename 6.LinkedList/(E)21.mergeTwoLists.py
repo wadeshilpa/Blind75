@@ -1,6 +1,7 @@
 # Easy 
 # Merge Two Sorted Lists
 # Singly linked list - Two-pointer merge
+# https://leetcode.com/problems/merge-two-sorted-lists/description/
 
 # You are given the heads of two sorted linked lists list1 and list2.
 # Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.

@@ -1,5 +1,7 @@
 # Difficulty : Medium 
+# Two Sum II - Input Array Is Sorted
 # Variant of TwoSum but the list is sorted. So the space complexity can be reduced to O(1) by using 2 pointers.
+# https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
 
 # Given a 1-indexed, sorted array of integers, find two numbers that add up to a specific target. 
 # Return their indices as a list [index1, index2] where 1 <= index1 < index2 <= numbers.length. 
