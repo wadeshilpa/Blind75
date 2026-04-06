@@ -35,13 +35,14 @@ def to_list(l1):
     return result
 
 class Solution:
-    def reverseList(self, l1:ListNode)->ListNode:
+    def reverseList(self, head:ListNode)->ListNode:
         prev = None
-        while l1:
-            dummy = l1.next
-            l1.next = prev
-            prev = l1 
-            l1 = dummy
+        current = head
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current 
+            current = temp
         return prev
 
 if __name__ == "__main__":
